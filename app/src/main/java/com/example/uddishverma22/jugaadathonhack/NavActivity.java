@@ -3,6 +3,7 @@ package com.example.uddishverma22.jugaadathonhack;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -16,10 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -90,7 +95,7 @@ public class NavActivity extends AppCompatActivity
 //            e.printStackTrace();
 //        }
 
-        Intent i = new Intent(this, DetailsActivity.class);
+        Intent i = new Intent(this, ChildDetailsRegister.class);
         i.putExtra("data", dataString);
         startActivity(i);
 
@@ -121,11 +126,38 @@ public class NavActivity extends AppCompatActivity
                 .build();
         jsonObject = xmlToJson.toJson();
         Gson gson = new Gson();
+        final BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
 
-        BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
+//        ValueEventListener eventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot i:dataSnapshot.child("aadhars").getChildren()){
+//                    Log.d(TAG, "onDataChange: key:"+i.getKey());
+//                    if(!(i.getKey().equals(details.getPrintLetterBarcodeData().getUID()))){
+//                                firebaseRef.child("aadhars").child(String.valueOf(details.getPrintLetterBarcodeData()
+//                                        .getUID())).setValue(details.getPrintLetterBarcodeData());
+//                        Log.d(TAG, "onDataChange: if CASE");
+//                    }else {
+//                        Toast.makeText(NavActivity.this, "USER ALREADY REGISTERED", Toast.LENGTH_SHORT).show();
+//                        Log.d(TAG, "onDataChange: ELSE CASE");
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        };
+//
+//        firebaseRef.addValueEventListener(eventListener);
+
+
+
+
         firebaseRef.child("aadhars").child(String.valueOf(details.getPrintLetterBarcodeData().getUID())).setValue(details.getPrintLetterBarcodeData());
-        Log.d(TAG, "jsonToObject: DETAILS " + String.valueOf(details.getPrintLetterBarcodeData().getUID()));
-        Log.d(TAG, "convertXmlToJson: JSON OBJECT " + jsonObject);
+//        Log.d(TAG, "jsonToObject: DETAILS " + String.valueOf(details.getPrintLetterBarcodeData().getUID()));
+//        Log.d(TAG, "convertXmlToJson: JSON OBJECT " + jsonObject);
         return xmlToJson.toString();
     }
 
