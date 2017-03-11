@@ -6,21 +6,20 @@ package com.example.uddishverma22.jugaadathonhack;
 
 public class VaccinePOJO {
 
-    Boolean bcg;
-    Boolean dpt1;
-    Boolean dpt2;
-    Boolean dpt3;
-    Boolean opv1;
-    Boolean opv2;
-    Boolean opv3;
-    Boolean hbv1;
-    Boolean hbv2;
-    Boolean hbv3;
-    Boolean measles;
-    String date;
+    String  bcg;
+    String dpt1;
+    String dpt2;
+    String dpt3;
+    String opv1;
+    String opv2;
+    String opv3;
+    String hbv1;
+    String hbv2;
+    String hbv3;
+    String measles;
 
-    public VaccinePOJO(Boolean bcg, Boolean dpt1, Boolean dpt2, Boolean dpt3, Boolean opv1, Boolean opv2,
-                       Boolean opv3, Boolean hbv1, Boolean hbv2, Boolean hbv3, Boolean measles, String date) {
+    public VaccinePOJO(String bcg, String dpt1, String dpt2, String dpt3, String opv1, String opv2,
+                       String opv3, String hbv1, String hbv2, String hbv3, String measles) {
 
 //        this.setBcg(bcg);
         this.bcg = bcg;
@@ -34,103 +33,95 @@ public class VaccinePOJO {
         this.hbv2 = hbv2;
         this.hbv3 = hbv3;
         this.measles = measles;
-        this.date = date;
     }
 
 
-    public Boolean getBcg() {
+    public String getBcg() {
         return bcg;
     }
 
-    public void setBcg(Boolean bcg) {
+    public void setBcg(String bcg) {
         this.bcg = bcg;
     }
 
-    public Boolean getDpt1() {
+    public String getDpt1() {
         return dpt1;
     }
 
-    public void setDpt1(Boolean dpt1) {
+    public void setDpt1(String dpt1) {
         this.dpt1 = dpt1;
     }
 
-    public Boolean getDpt2() {
+    public String getDpt2() {
         return dpt2;
     }
 
-    public void setDpt2(Boolean dpt2) {
+    public void setDpt2(String dpt2) {
         this.dpt2 = dpt2;
     }
 
-    public Boolean getDpt3() {
+    public String getDpt3() {
         return dpt3;
     }
 
-    public void setDpt3(Boolean dpt3) {
+    public void setDpt3(String dpt3) {
         this.dpt3 = dpt3;
     }
 
-    public Boolean getOpv1() {
+    public String getOpv1() {
         return opv1;
     }
 
-    public void setOpv1(Boolean opv1) {
+    public void setOpv1(String opv1) {
         this.opv1 = opv1;
     }
 
-    public Boolean getOpv2() {
+    public String getOpv2() {
         return opv2;
     }
 
-    public void setOpv2(Boolean opv2) {
+    public void setOpv2(String opv2) {
         this.opv2 = opv2;
     }
 
-    public Boolean getOpv3() {
+    public String getOpv3() {
         return opv3;
     }
 
-    public void setOpv3(Boolean opv3) {
+    public void setOpv3(String opv3) {
         this.opv3 = opv3;
     }
 
-    public Boolean getHbv1() {
+    public String getHbv1() {
         return hbv1;
     }
 
-    public void setHbv1(Boolean hbv1) {
+    public void setHbv1(String hbv1) {
         this.hbv1 = hbv1;
     }
 
-    public Boolean getHbv2() {
+    public String getHbv2() {
         return hbv2;
     }
 
-    public void setHbv2(Boolean hbv2) {
+    public void setHbv2(String hbv2) {
         this.hbv2 = hbv2;
     }
 
-    public Boolean getHbv3() {
+    public String getHbv3() {
         return hbv3;
     }
 
-    public void setHbv3(Boolean hbv3) {
+    public void setHbv3(String hbv3) {
         this.hbv3 = hbv3;
     }
 
-    public Boolean getMeasles() {
+    public String getMeasles() {
         return measles;
     }
 
-    public void setMeasles(Boolean measles) {
+    public void setMeasles(String measles) {
         this.measles = measles;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

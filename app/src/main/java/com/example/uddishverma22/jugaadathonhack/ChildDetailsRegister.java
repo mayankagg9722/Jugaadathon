@@ -1,5 +1,6 @@
 package com.example.uddishverma22.jugaadathonhack;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,15 +14,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChildDetailsRegister extends AppCompatActivity {
 
     public static final String TAG = "checkbox";
 
     CheckBox bcg, dpt1, dpt2, dpt3, hbv1, hbv2, hbv3, measles, opv1, opv2, opv3;
+    String sbcg= "null", sdpt1= "null", sdpt2= "null", sdpt3= "null",
+            shbv1= "null", shbv2= "null", shbv3= "null", smeasles= "null", sopv1= "null", sopv2= "null", sopv3 = "null";
     Button submit;
-    String tempUID = "797764736939";
-
+    String tempUID = DoctorFirstActivity.UID;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference firebaseRef = database.getReference();
     VaccinePOJO vaccinePOJO;
@@ -57,10 +61,60 @@ public class ChildDetailsRegister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                vaccinePOJO = new VaccinePOJO(bcg.isChecked(), dpt1.isChecked(), dpt2.isChecked(), dpt3.isChecked(), hbv1.isChecked(),
-                        hbv2.isChecked(), hbv3.isChecked(), opv1.isChecked(), opv2.isChecked(), opv3.isChecked(), measles.isChecked(), myDate);
+                if (bcg.isChecked()) {
+                    sbcg = myDate;
+                }
+                if (dpt1.isChecked()) {
+                    sdpt1=myDate;
 
-                firebaseRef.child("aadhars").child(tempUID).child("Vaccines").setValue(vaccinePOJO);
+                }
+                if (dpt2.isChecked()) {
+                    sdpt2=myDate;
+
+                }
+                if (dpt3.isChecked()) {
+                    sdpt3=myDate;
+
+                }
+                if (hbv1.isChecked()) {
+                    shbv1=myDate;
+
+                }
+                if (hbv2.isChecked()) {
+                    shbv1=myDate;
+
+                }
+                if (hbv3.isChecked()) {
+                    shbv3=myDate;
+
+                }
+                if (opv1.isChecked()) {
+                    sopv1=myDate;
+
+                }
+                if (opv2.isChecked()) {
+                    sopv2=myDate;
+
+                }
+                if (opv3.isChecked()) {
+                    sopv3=myDate;
+
+                }
+                if (measles.isChecked()) {
+                    smeasles=myDate;
+                }
+
+
+                    vaccinePOJO = new VaccinePOJO(sbcg, sdpt1, sdpt2, sdpt3, shbv1,
+                            shbv2, shbv3, sopv1, sopv2, sopv3, smeasles);
+
+                Map<String,Object> taskMap = new HashMap<String,Object>();
+
+                taskMap.put("Vaccines",vaccinePOJO);
+
+                firebaseRef.child("aadhars").child(tempUID).updateChildren(taskMap);
+
+//                firebaseRef.child("aadhars").child(tempUID).child("Vaccines").setValue(vaccinePOJO);
 
             }
         });
