@@ -58,7 +58,7 @@ public class NavActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
-        resultTextView = (TextView) findViewById(R.id.tv1);
+//        resultTextView = (TextView) findViewById(R.id.tv1);
         mydecoderview.setOnQRCodeReadListener(this);
 
         // Use this function to enable/disable decoding
@@ -89,7 +89,7 @@ public class NavActivity extends AppCompatActivity
 
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
-        resultTextView.setText(text);
+//        resultTextView.setText(text);
         convertXmlToJson(text);
 
 //        try {
@@ -98,9 +98,9 @@ public class NavActivity extends AppCompatActivity
 //            e.printStackTrace();
 //        }
 
-        Intent i = new Intent(this, ChildDetailsRegister.class);
-        i.putExtra("data", dataString);
-        startActivity(i);
+//        Intent i = new Intent(this, ChildDetailsRegister.class);
+//        i.putExtra("data", dataString);
+//        startActivity(i);
 
     }
 
