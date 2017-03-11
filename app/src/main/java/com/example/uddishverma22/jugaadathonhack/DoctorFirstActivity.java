@@ -9,12 +9,24 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
-public class DoctorFirstActivity extends AppCompatActivity implements QRCodeReaderView.OnQRCodeReadListener{
+import org.json.JSONObject;
 
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
-     QRCodeReaderView mydecoderview;
-     EditText uid;
+public class DoctorFirstActivity extends AppCompatActivity implements QRCodeReaderView.OnQRCodeReadListener {
+
+    public static final String TAG = "Doctor";
+
+    QRCodeReaderView mydecoderview;
+    EditText uid;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference firebaseRef = database.getReference();
+    JSONObject jsonObject;
+    String UID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +34,7 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         setContentView(R.layout.activity_doctor_first);
 
         mydecoderview = (QRCodeReaderView) findViewById(R.id.doctorqr);
-        uid = (EditText)findViewById(R.id.ed1);
+        uid = (EditText) findViewById(R.id.ed1);
         mydecoderview.setOnQRCodeReadListener(this);
 
         // Use this function to enable/disable decoding
@@ -48,6 +60,37 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
 
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
-        Log.d("tagg",text);
+
+        convertXmlToJson(text);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mydecoderview.startCamera();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mydecoderview.stopCamera();
+    }
+
+    public String convertXmlToJson(String xml) {
+        XmlToJson xmlToJson = new XmlToJson.Builder(xml)
+                .setAttributeName("/", "UID")
+                .build();
+        jsonObject = xmlToJson.toJson();
+        Gson gson = new Gson();
+        final BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
+
+        Log.d(TAG, "convertXmlToJson: UID " + details.getPrintLetterBarcodeData().getUID());
+        Intent i = new Intent(this, ChildDetailsRegister.class);
+        i.putExtra("uid", details.getPrintLetterBarcodeData().getUID());
+        startActivity(i);
+
+
+        return xmlToJson.toString();
     }
 }
