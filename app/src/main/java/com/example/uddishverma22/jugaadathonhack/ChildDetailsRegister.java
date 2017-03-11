@@ -43,7 +43,6 @@ public class ChildDetailsRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_details_register);
-//        final VaccinePOJO vaccinePOJO;
 
         bcg = (CheckBox) findViewById(R.id.bcg);
         dpt1 = (CheckBox) findViewById(R.id.dpt1);
@@ -111,8 +110,6 @@ public class ChildDetailsRegister extends AppCompatActivity {
                 if (measles.isChecked()) {
                     smeasles=myDate;
                 }
-
-
                     vaccinePOJO = new VaccinePOJO(sbcg, sdpt1, sdpt2, sdpt3, shbv1,
                             shbv2, shbv3, sopv1, sopv2, sopv3, smeasles);
 
@@ -129,8 +126,6 @@ public class ChildDetailsRegister extends AppCompatActivity {
                         }
                     }
                 });
-
-//                firebaseRef.child("aadhars").child(tempUID).child("Vaccines").setValue(vaccinePOJO);
 
             }
         });

@@ -6,6 +6,8 @@ import android.provider.Contacts;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
@@ -31,6 +33,8 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
     DatabaseReference firebaseRef = database.getReference();
     JSONObject jsonObject;
     static String UID;
+    Button submit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         setContentView(R.layout.activity_doctor_first);
 
         mydecoderview = (QRCodeReaderView) findViewById(R.id.doctorqr);
+        submit=(Button)findViewById(R.id.subdoc);
+
         uid = (EditText) findViewById(R.id.ed1);
         mydecoderview.setOnQRCodeReadListener(this);
 
@@ -56,16 +62,18 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         // Use this function to set back camera preview
         mydecoderview.setBackCamera();
 
-<<<<<<< HEAD
-        UID = uid.getText().toString();
 
-        Log.d("tagg uid:", UID);
-=======
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UID = uid.getText().toString();
+                Log.d(TAG, "onCreate: uid:"+UID);
+                Intent i = new Intent(DoctorFirstActivity.this, NewOrVaccine.class);
+                startActivity(i);
+            }
+        });
 
-        UID = uid.getText().toString();
 
-
->>>>>>> 7b3c80822405ce7917933be8a1e688740487be4b
 
     }
 
@@ -97,17 +105,10 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         final BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
 
         Log.d(TAG, "convertXmlToJson: UID " + details.getPrintLetterBarcodeData().getUID());
-<<<<<<< HEAD
         Intent i = new Intent(this, NewOrVaccine.class);
         UID = String.valueOf(details.getPrintLetterBarcodeData().getUID());
         startActivity(i);
 
-=======
-
-        Intent i = new Intent(this, NewOrVaccine.class);
-        UID=details.getPrintLetterBarcodeData().getUID().toString();
-        startActivity(i);
->>>>>>> 7b3c80822405ce7917933be8a1e688740487be4b
         return xmlToJson.toString();
     }
 }
