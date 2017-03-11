@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NavActivity"
+            android:name=".ChildDetailsRegister"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_nav"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChildDetailsRegister"></activity>
+        <activity android:name=".NavActivity"></activity>
     </application>
 
 </manifest>

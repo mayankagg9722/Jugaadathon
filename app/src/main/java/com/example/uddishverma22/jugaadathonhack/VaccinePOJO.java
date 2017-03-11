@@ -21,6 +21,8 @@ public class VaccinePOJO {
 
     public VaccinePOJO(Boolean bcg, Boolean dpt1, Boolean dpt2, Boolean dpt3, Boolean opv1, Boolean opv2,
                        Boolean opv3, Boolean hbv1, Boolean hbv2, Boolean hbv3, Boolean measles, String date) {
+
+//        this.setBcg(bcg);
         this.bcg = bcg;
         this.dpt1 = dpt1;
         this.dpt2 = dpt2;
