@@ -14,6 +14,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Accessible by only doctors
+ * The can update the vaccination details of a particular child
+ */
+
 public class ChildDetailsRegister extends AppCompatActivity {
 
     public static final String TAG = "checkbox";

@@ -17,6 +17,10 @@ import org.json.JSONObject;
 
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
+/**
+ * This activity shows the qr reader for the director
+ */
+
 public class DoctorFirstActivity extends AppCompatActivity implements QRCodeReaderView.OnQRCodeReadListener {
 
     public static final String TAG = "Doctor";
@@ -26,7 +30,7 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference firebaseRef = database.getReference();
     JSONObject jsonObject;
-    String UID;
+    static String UID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,6 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         // Use this function to set back camera preview
         mydecoderview.setBackCamera();
 
-        String UID = uid.getText().toString();
-
-        Log.d("tagg uid:", UID);
 
     }
 
@@ -86,10 +87,9 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         final BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
 
         Log.d(TAG, "convertXmlToJson: UID " + details.getPrintLetterBarcodeData().getUID());
-        Intent i = new Intent(this, ChildDetailsRegister.class);
-        i.putExtra("uid", details.getPrintLetterBarcodeData().getUID());
+        Intent i = new Intent(this, NewOrVaccine.class);
+        UID = String.valueOf(details.getPrintLetterBarcodeData().getUID());
         startActivity(i);
-
 
         return xmlToJson.toString();
     }

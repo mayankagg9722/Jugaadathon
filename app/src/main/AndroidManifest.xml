@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -25,8 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChildDetailsRegister"></activity>
-        <activity android:name=".DoctorFirstActivity"></activity>
+        <activity android:name=".ChildDetailsRegister" />
+        <activity android:name=".DoctorFirstActivity" />
+        <activity android:name=".NewBornRegister" />
+        <activity android:name=".NewOrVaccine"></activity>
     </application>
 
 </manifest>
