@@ -32,6 +32,8 @@ import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
@@ -152,10 +154,15 @@ public class NavActivity extends AppCompatActivity
 //
 //        firebaseRef.addValueEventListener(eventListener);
 
+        Map<String,Object> taskMap = new HashMap<String,Object>();
+
+        taskMap.put(String.valueOf(details.getPrintLetterBarcodeData().getUID()),details.getPrintLetterBarcodeData());
+
+        firebaseRef.child("aadhars").updateChildren(taskMap);
 
 
-
-        firebaseRef.child("aadhars").child(String.valueOf(details.getPrintLetterBarcodeData().getUID())).setValue(details.getPrintLetterBarcodeData());
+//        firebaseRef.child("aadhars").child(String.valueOf(details.getPrintLetterBarcodeData().getUID()))
+//                .setValue(details.getPrintLetterBarcodeData());
 //        Log.d(TAG, "jsonToObject: DETAILS " + String.valueOf(details.getPrintLetterBarcodeData().getUID()));
 //        Log.d(TAG, "convertXmlToJson: JSON OBJECT " + jsonObject);
         return xmlToJson.toString();
