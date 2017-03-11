@@ -3,6 +3,7 @@ package com.example.uddishverma22.jugaadathonhack;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -105,7 +106,6 @@ public class NavActivity extends AppCompatActivity
         Gson gson = new Gson();
         BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
         Log.d(TAG, "jsonToObject: DETAILS " + String.valueOf(details.getPrintLetterBarcodeData()));
-
     }
 
     @Override
@@ -201,7 +201,10 @@ public class NavActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            finish();
+            startActivity(new Intent(NavActivity.this,DoctorFirstActivity.class));
         } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(NavActivity.this,ChildDetailsRegister.class));
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -216,7 +219,6 @@ public class NavActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
     }
 
 
