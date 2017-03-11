@@ -1,6 +1,7 @@
 package com.example.uddishverma22.jugaadathonhack;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -117,7 +120,15 @@ public class ChildDetailsRegister extends AppCompatActivity {
 
                 taskMap.put("Vaccines",vaccinePOJO);
 
-                firebaseRef.child("aadhars").child(tempUID).updateChildren(taskMap);
+                firebaseRef.child("aadhars").child(tempUID).child("child").updateChildren(taskMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isComplete()){
+                            finish();
+                            startActivity(new Intent(ChildDetailsRegister.this,NewOrVaccine.class));
+                        }
+                    }
+                });
 
 //                firebaseRef.child("aadhars").child(tempUID).child("Vaccines").setValue(vaccinePOJO);
 

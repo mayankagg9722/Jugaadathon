@@ -41,7 +41,6 @@ public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, QRCodeReaderView.OnQRCodeReadListener {
 
 
-    private TextView resultTextView;
     private QRCodeReaderView mydecoderview;
     public static final String TAG = "MainActivity";
     String dataString;
