@@ -10,18 +10,10 @@ public class NewBornPOJO {
     String dob;
     String aadhar;
 
-    public String getAadhar() {
-        return aadhar;
-    }
-
-    public void setAadhar(String aadhar) {
-        this.aadhar = aadhar;
-    }
 
     public NewBornPOJO(String name, String dob, String aadhar) {
         this.name = name;
         this.dob = dob;
-        this.aadhar = aadhar;
     }
 
     public String getName() {

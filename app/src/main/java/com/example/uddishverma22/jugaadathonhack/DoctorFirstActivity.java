@@ -56,9 +56,16 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         // Use this function to set back camera preview
         mydecoderview.setBackCamera();
 
+<<<<<<< HEAD
         UID = uid.getText().toString();
 
         Log.d("tagg uid:", UID);
+=======
+
+        UID = uid.getText().toString();
+
+
+>>>>>>> 7b3c80822405ce7917933be8a1e688740487be4b
 
     }
 
@@ -90,10 +97,17 @@ public class DoctorFirstActivity extends AppCompatActivity implements QRCodeRead
         final BarcodeDataPOJO details = gson.fromJson(jsonObject.toString(), BarcodeDataPOJO.class);
 
         Log.d(TAG, "convertXmlToJson: UID " + details.getPrintLetterBarcodeData().getUID());
+<<<<<<< HEAD
         Intent i = new Intent(this, NewOrVaccine.class);
         UID = String.valueOf(details.getPrintLetterBarcodeData().getUID());
         startActivity(i);
 
+=======
+
+        Intent i = new Intent(this, NewOrVaccine.class);
+        UID=details.getPrintLetterBarcodeData().getUID().toString();
+        startActivity(i);
+>>>>>>> 7b3c80822405ce7917933be8a1e688740487be4b
         return xmlToJson.toString();
     }
 }
