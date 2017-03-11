@@ -4,14 +4,24 @@ import android.content.Intent;
 import android.graphics.PointF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
-
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
+
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+
+import fr.arnaudguyon.xmltojsonlib.JsonToXml;
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
 public class MainActivity extends AppCompatActivity implements QRCodeReaderView.OnQRCodeReadListener{
 
     private TextView resultTextView;
     private QRCodeReaderView mydecoderview;
+    public static final String TAG = "MainActivity";
+    String dataString;
+    JSONObject jsonObject;
 
 
     @Override
@@ -45,6 +55,11 @@ public class MainActivity extends AppCompatActivity implements QRCodeReaderView.
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
         resultTextView.setText(text);
+        Log.d(TAG, "onQRCodeRead: " + convertXmlToJson(text));
+        Intent i = new Intent(this, DetailsActivity.class);
+        i.putExtra("data", dataString);
+        startActivity(i);
+
     }
 
     @Override
@@ -57,5 +72,13 @@ public class MainActivity extends AppCompatActivity implements QRCodeReaderView.
     protected void onPause() {
         super.onPause();
         mydecoderview.stopCamera();
+    }
+
+    public String convertXmlToJson(String xml) {
+        XmlToJson xmlToJson = new XmlToJson.Builder(xml)
+                .setAttributeName("/PrintLetterBarcodeData/uid", "UID")
+                .build();
+        jsonObject = xmlToJson.toJson();
+        return xmlToJson.toString();
     }
 }

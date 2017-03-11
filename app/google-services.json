@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "72131974548",
+    "firebase_url": "https://sab-asha.firebaseio.com",
+    "project_id": "sab-asha",
+    "storage_bucket": "sab-asha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72131974548:android:e223422d39e8e6b6",
+        "android_client_info": {
+          "package_name": "com.example.uddishverma22.jugaadathonhack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72131974548-uplh0ee9tqiumrl6mu9db4rtm2u94sf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGxjC7vmR5bkxanai9wkLlJQinbnHvb0s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

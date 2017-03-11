@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:padding="20dp"
     android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.uddishverma22.jugaadathonhack.MainActivity">
+    android:background="@android:color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.uddishverma22.jugaadathonhack.NavActivity"
+    tools:showIn="@layout/app_bar_nav">
 
     <com.dlazaro66.qrcodereaderview.QRCodeReaderView
 
@@ -15,16 +17,12 @@
         android:layout_height="200dp" />
 
     <TextView
-        android:layout_margin="10dp"
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceSmall"/>
+        android:layout_margin="10dp"
+        android:textAppearance="?android:textAppearanceSmall" />
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BUTTON"/>
 
 </LinearLayout>
+
